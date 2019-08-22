@@ -1,0 +1,51 @@
+﻿<Window x:Class="Netsoft.Wpf.Samples.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Netsoft.Wpf.Samples"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid ShowGridLines="True">
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel 
+            DataContext="{Binding DataContext[0], RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type local:MainWindow}}, Mode=OneWay}"
+            Grid.Row="0" Orientation="Vertical">
+            <TextBlock Text="{Binding Message}"></TextBlock>
+            <Button Content="!" 
+                    Width="20"
+                    Visibility="{Binding Trimmed}"
+                    Command="{Binding ShowMessage}">
+            </Button>
+        </StackPanel>
+        <StackPanel 
+            DataContext="{Binding DataContext[1], RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type local:MainWindow}}, Mode=OneWay}"
+            Width="Auto" Grid.Row="1" Orientation="Horizontal">
+            <TextBlock Text="{Binding Message}"></TextBlock>
+            <Button Content="!" 
+                    Width="20"
+                    Visibility="{Binding Trimmed}"
+                    Command="{Binding ShowMessage}">
+            </Button>
+        </StackPanel>
+        <Grid Grid.Row="2"
+            DataContext="{Binding DataContext[2], RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type local:MainWindow}}, Mode=OneWay}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="20"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" 
+                       Text="{Binding Message}"></TextBlock>
+            <Button Grid.Column="1"
+                    Content="!" 
+                     Width="20"
+                    Visibility="{Binding Trimmed}"
+                    Command="{Binding ShowMessage}">
+            </Button>
+        </Grid>
+    </Grid>
+</Window>
